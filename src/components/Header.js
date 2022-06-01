@@ -3,7 +3,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 
 const Header = ({ title, userName }) => {
     return (
-        <header className="flex justify-between">
+        <header className="flex justify-between ">
             <h1 className="text-3xl md:mt-3 md:text-4xl text-mainText">
                 {title}                   
                 {

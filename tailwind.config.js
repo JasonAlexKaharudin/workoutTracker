@@ -15,7 +15,10 @@ module.exports = {
       'activityCardRed': '#FBECF0',
       'activityCardRedText': '#D2416E',
       'activityCardBlue': '#E8F2FB',
-      'activityCardBlueText': '#197BD2'
+      'activityCardBlueText': '#197BD2',
+      'WorkoutCardBG': '#FAFAFA',
+      'PRcolor': '#00BA29',
+      'cardDivider': '#D1D1D1'
     }
   },
   plugins: [],
