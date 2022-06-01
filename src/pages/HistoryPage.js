@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "../components/Header";
 
 const HistoryPage = () => {
     return(
         <>
-            <h1>Hi from History Page</h1>
+            <Header title={'History'}/>
         </>
     )
 }

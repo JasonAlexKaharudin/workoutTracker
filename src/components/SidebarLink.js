@@ -10,7 +10,7 @@ const getWindowDimension = () => {
 }
 
 const SidebarLink = ({ nav }) => {
-    const [ dimensions, setDimensions ] = useState(getWindowDimension());
+    const [dimensions, setDimensions] = useState(getWindowDimension());
 
     useEffect(() => {
         const handleResize = () => {
@@ -22,16 +22,16 @@ const SidebarLink = ({ nav }) => {
             window.removeEventListener('resize', handleResize);
         }
     }, []);
-    
+
     return (
-        <div className="flex text-md md:my-3 mx-9 hover:font-medium">
-            <Link to={nav.link} className="pr-3">
-                {nav.icon} 
-            </Link>
-            <span>
-            { dimensions.width > 768 && nav.title}            
-            </span>            
-        </div>    
+        <Link to={nav.link} className="pr-3">
+            <div className="flex text-md md:my-3 mx-9 hover:font-medium">
+                {nav.icon}
+                <span className='md:pl-3'>
+                    {dimensions.width > 768 && nav.title}
+                </span>
+            </div>
+        </Link>
     )
 }
 

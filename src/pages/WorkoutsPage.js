@@ -1,12 +1,11 @@
 import React from "react";
+import Header from "../components/Header";
 
 const WorkoutsPage = () => {
     return(
-        <div>
-            <h1>
-                Hi from workouts page
-            </h1>
-        </div>
+        <>
+            <Header title={'My Workouts'}/>
+        </>
     )
 }
 
