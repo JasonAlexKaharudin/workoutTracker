@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import WorkoutCards from "../components/WorkoutCards";
+import WorkoutCards from "../components/cards/WorkoutCards";
 
 const WorkoutsPage = () => {
     return(

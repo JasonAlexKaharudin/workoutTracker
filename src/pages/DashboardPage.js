@@ -1,6 +1,6 @@
 import React from "react"
-import WeatherCard from "../components/WeatherCard";
-import ActivityCards from "../components/ActivityCards";
+import WeatherCard from "../components/cards/WeatherCard";
+import ActivityCards from "../components/cards/ActivityCards";
 import Header from "../components/Header";
 
 const Dashboard = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityCardData } from './ActivityCardData'
+import { ActivityCardData } from '../ActivityCardData'
 import ActivityCard from './ActivityCard'
 
 const ActivityCards = () => {

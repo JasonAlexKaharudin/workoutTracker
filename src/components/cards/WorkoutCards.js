@@ -1,6 +1,6 @@
 import React from 'react'
 import WorkoutCard from './WorkoutCard'
-import { WorkoutsData } from './WorkoutsData'
+import { WorkoutsData } from '../WorkoutsData'
 
 const WorkoutCards = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import ExercisesList from './ExercisesList'
+import ExercisesList from '../ExercisesList'
 import WorkoutCardHeader from './WorkoutCardHeader'
 
 const WorkoutCard = ({ workout }) => {        
