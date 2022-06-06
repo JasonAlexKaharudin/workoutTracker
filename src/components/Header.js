@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillPlusCircle } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 const getWindowDimension = () => {
     const { innerWidth: width, innerHeight: height } = window;
@@ -32,10 +33,11 @@ const Header = ({ title, userName }) => {
                 }            
             </h1>
             <button className="md:pt-0">
-                <span>
-                    {dimensions.width > 768? <AiFillPlusCircle size={60}/> : <AiFillPlusCircle size={43}/>}
-                    
-                </span>
+                <Link to="/create">
+                    <span>
+                        {dimensions.width > 768? <AiFillPlusCircle size={60} onMouseOver={({target})=>target.style.color="grey"} onMouseOut={({target})=>target.style.color="black"}/> : <AiFillPlusCircle size={43} />}                    
+                    </span>                
+                </Link>
             </button>           
         </header>
   )

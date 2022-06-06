@@ -1,6 +1,5 @@
 import React from 'react';
-import { GiElectric } from 'react-icons/gi' 
-import { FcClock, FcNightLandscape } from 'react-icons/fc'
+import { FcClock, FcNightLandscape, FcCheckmark } from 'react-icons/fc'
 
 export const ActivityCardData = [
     {
@@ -13,7 +12,7 @@ export const ActivityCardData = [
     {
         header: "Start Workout",
         subHeader: "Back",
-        icon: <GiElectric size={30} color={'197BD2'}/>, 
+        icon: <FcCheckmark size={30}/>, 
         textColor: 'text-activityCardBlueText',
         bgColor: 'bg-activityCardBlue' 
     },
