@@ -9,9 +9,6 @@ const Dashboard = () => {
       <Header title={'Welcome back'} userName={'Wacko!'}/>
       <WeatherCard/>      
       <ActivityCards/>
-      <ActivityCards/>
-      <ActivityCards/>
-      <ActivityCards/>
     </>    
   )
 }

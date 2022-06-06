@@ -4,7 +4,7 @@ import { WorkoutsData } from '../WorkoutsData'
 
 const WorkoutCards = () => {
     return (
-        <section className='flex flex-wrap justify-between md:mt-24'>    
+        <section className='flex flex-wrap justify-between mt-10 mb-32 md:mt-16'>    
         {
             WorkoutsData.map((workout) => {                
                 return(                    

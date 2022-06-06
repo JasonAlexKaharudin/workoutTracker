@@ -13,7 +13,7 @@ const Exercise = ({ exercise }) => {
                 <p className='text-sm text-PRcolor'>PR: {exercise.personal_record} lbs</p>
 
             </div>
-            <p className='pt-1 text-xs md:text-sm'>
+            <p className='pt-2 text-xs md:text-sm text-mainText'>
                 {exercise.sets}S/{exercise.reps}R @ {exercise.weight_PP} lbs
             </p>
         </div>

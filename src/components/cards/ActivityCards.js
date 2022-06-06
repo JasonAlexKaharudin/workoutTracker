@@ -4,7 +4,7 @@ import ActivityCard from './ActivityCard'
 
 const ActivityCards = () => {
   return (
-    <section className='mt-10'>
+    <section className='mt-10 mb-32'>
       <h1 className='text-xl md:text-2xl text-mainText'>Your Activity</h1>
       <div className='flex flex-wrap items-start justify-between mt-6'>
         {
