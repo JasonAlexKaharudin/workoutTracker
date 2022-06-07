@@ -1,6 +1,6 @@
 import React from 'react'
 import WorkoutCard from './cards/WorkoutCard'
-import { WorkoutsData } from './WorkoutsData'
+import { WorkoutsData } from './static_comp_data/WorkoutsData'
 
 const WorkoutList = () => {
     return (

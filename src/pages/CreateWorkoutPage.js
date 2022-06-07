@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import DimensionContext from '../components/context/DimensionsContext';
-import WorkoutForm from '../components/WorkoutForm';
+import WorkoutForm from '../components/forms/WorkoutForm';
 import { useNavigate } from 'react-router-dom';
 import { GrPrevious } from 'react-icons/gr';
 
@@ -18,18 +18,20 @@ const CreateWorkoutPage = () => {
   }
 
   return (
-    <header>
-      <div className='flex'>
-        <button onClick={handleBackBtn} className="pr-3 md:pt-3">
-          {dimensions.width > 768 ? <span> <GrPrevious size={17} /> </span> : <span> <GrPrevious size={15} /> </span>}
-        </button>
-        <h1 className="text-3xl md:mt-3 md:text-4xl text-mainText">
-          Create Workout
-        </h1>
-      </div>
+    <>
+      <header>
+        <div className='flex'>
+          <button onClick={handleBackBtn} className="pr-3 md:pt-3">
+            {dimensions.width > 768 ? <span> <GrPrevious size={17} /> </span> : <span> <GrPrevious size={15} /> </span>}
+          </button>
+          <h1 className="text-3xl md:mt-3 md:text-4xl text-mainText">
+            Create Workout
+          </h1>
+        </div>
 
+      </header>
       <WorkoutForm />
-    </header>
+    </>
   )
 }
 

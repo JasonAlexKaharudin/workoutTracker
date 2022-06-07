@@ -4,37 +4,79 @@ import { IoMdTrendingDown, IoMdTrendingUp } from 'react-icons/io';
 export const WorkoutsData = [
     {
         title: 'Chest',
+        date_performed: '2nd May 2022',
         exercises: [
             {
                 name: 'Bench Press',
-                sets: 3,
-                reps: 5,
-                weight_PP: 65,
+                type: 'Weights',
+                data: [
+                    {
+                        sets: 3,
+                        reps: 5,
+                        weight_PP: 65,
+                    },
+                    {
+                        sets: 3,
+                        reps: 5,
+                        weight_PP: 67.5,
+                    },
+                ],
                 personal_record: 65,
+                last_recorded_weight: 67.5,
                 icon: <IoMdTrendingDown size={23} color={"FF5B5A"} />
             },
             {
                 name: 'Flat Dumbbell',
-                sets: 3,
-                reps: 12,
-                weight_PP: 40,
+                data: [
+                    {
+                        sets: 3,
+                        reps: 12,
+                        weight_PP: 40,
+                    },
+                    {
+                        sets: 3,
+                        reps: 12,
+                        weight_PP: 45,
+                    },
+                ],
                 personal_record: 40,
+                last_recorded_weight: 45,
                 icon: <IoMdTrendingUp size={23} color={"00A28A"} />
             },
             {
                 name: 'Incline Dumbbell',
-                sets: 3,
-                reps: 8,
-                weight_PP: 45,
+                data: [
+                    {
+                        sets: 3,
+                        reps: 8,
+                        weight_PP: 45,
+                    },
+                    {
+                        sets: 3,
+                        reps: 8,
+                        weight_PP: 43,
+                    }
+                ],
                 personal_record: 45,
+                last_recorded_weight: 43,
                 icon: <IoMdTrendingUp size={23} color={"00A28A"} />
             },
             {
                 name: 'Cable Fly',
-                sets: 3,
-                reps: 12,
-                weight_PP: 15,
+                data: [
+                    {
+                        sets: 3,
+                        reps: 12,
+                        weight_PP: 15,
+                    },
+                    {
+                        sets: 3,
+                        reps: 12,
+                        weight_PP: 15,
+                    }
+                ],
                 personal_record: 15,
+                last_recorded_weight: 15,
                 icon: <IoMdTrendingDown size={23} color={"FF5B5A"} />
             }
         ]

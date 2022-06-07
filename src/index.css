@@ -29,3 +29,12 @@ nav{
 #addSetBtn:hover{    
     background-color: #cdcdcd;
 }
+
+#CreateBtn{
+    background-color: rgb(53, 214, 53);
+    color: white;
+}
+
+#CreateBtn:hover{
+    background-color: rgb(8, 198, 8);
+}
