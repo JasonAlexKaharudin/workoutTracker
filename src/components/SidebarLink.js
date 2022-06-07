@@ -7,7 +7,7 @@ const SidebarLink = ({ nav }) => {
 
     useEffect(() => {
         handleResize();
-    }, []);    
+    });    
 
     return (
         <NavLink to={nav.link} className="mr-3">            
@@ -21,4 +21,4 @@ const SidebarLink = ({ nav }) => {
     )
 }
 
-export default SidebarLink
+export default SidebarLink;

@@ -7,9 +7,9 @@ const Header = ({ title, userName }) => {
     const { dimensions,  handleResize } = useContext(DimensionContext);
 
     useEffect(() => {
-        handleResize();
-        
-    }, []);    
+        handleResize();       
+         
+    });    
 
     return (
         <header className="flex justify-between ">
