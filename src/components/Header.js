@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect , useContext } from 'react'
+import DimensionContext from './context/DimensionsContext';
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
-const getWindowDimension = () => {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
-
 const Header = ({ title, userName }) => {
-    const [dimensions, setDimensions] = useState(getWindowDimension());
+    const { dimensions,  handleResize } = useContext(DimensionContext);
 
     useEffect(() => {
-        const handleResize = () => {
-            setDimensions(getWindowDimension());
-        }
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
+        handleResize();
+        
     }, []);    
 
     return (

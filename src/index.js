@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-
 import DashboardPage from './pages/DashboardPage';
 import HistoryPage from './pages/HistoryPage';
 import WorkoutsPage from './pages/WorkoutsPage';

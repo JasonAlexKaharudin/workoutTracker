@@ -1,39 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { GrPrevious } from 'react-icons/gr';
+import React, { useContext, useEffect } from 'react';
+import DimensionContext from '../components/context/DimensionsContext';
 import WorkoutForm from '../components/WorkoutForm';
+import { useNavigate } from 'react-router-dom';
+import { GrPrevious } from 'react-icons/gr';
 
-const getWindowDimension = () => {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
 
 const CreateWorkoutPage = () => {
-  const [dimensions, setDimensions] = useState(getWindowDimension());
-
+  const { dimensions, handleResize } = useContext(DimensionContext);
+  const navigate = useNavigate();
+  
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions(getWindowDimension());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
+    handleResize();
   }, []);
+  
+  const handleBackBtn = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  }
 
   return (
     <header>
       <div className='flex'>
-        {dimensions.width > 768? <span className='pt-6 pr-5'> <GrPrevious size={17}/> </span> : <span className='pt-3 pr-4'> <GrPrevious size={15}/> </span>}                            
+        <button onClick={ handleBackBtn } className="pr-3 md:pt-3">
+          {dimensions.width > 768 ? <span> <GrPrevious size={17} /> </span> : <span> <GrPrevious size={15} /> </span>}
+        </button>
         <h1 className="text-3xl md:mt-3 md:text-4xl text-mainText">
           Create Workout
         </h1>
       </div>
 
-      <WorkoutForm/>
+      <WorkoutForm />
     </header>
   )
 }
