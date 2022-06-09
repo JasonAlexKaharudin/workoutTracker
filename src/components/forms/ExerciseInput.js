@@ -1,42 +1,66 @@
 import React, { useState } from 'react';
-import { IoRemoveCircleOutline } from 'react-icons/io5';
 import SetInput from './SetInput';
+import { IoRemoveCircleOutline } from 'react-icons/io5';
 
-const ExerciseInput = ({ setExerciseName }) => {
+const ExerciseInput = ({ idx, exercise, handleExercisesChange, deleteExerciseField }) => {
     const [exerciseType, setExerciseType] = useState('Weighted');
-    const [numSets, setNumSets] = useState([]);
+    const [exericeData, setExerciseData] = useState([]);
+
+    const handleExerciseType = (idx, e) => {
+        handleExercisesChange(idx, e);
+        setExerciseType(e.target.value);
+    }
+
+    const handleExerciseDataChange = (idx, e) => {
+        let data = [...exericeData];
+        data[idx][e.target.name] = e.target.value;
+
+        setExerciseData(data);
+    }
 
     const onAddSet = (e) => {
         e.preventDefault();
-        setNumSets(numSets.concat(<SetInput key={numSets.length} exerciseType={exerciseType} numSets={numSets}/>))
-    }
+        let new_exerciseData;
 
-    const handleRemove = (e) => {
-        e.preventDefault();
-        console.log("remove me");
+        if (exerciseType === 'Weighted') {
+            new_exerciseData = {
+                setNumber: 0,
+                reps: 0,
+                weight_PP: 0,
+            };
+        } else {
+            new_exerciseData = {
+                setNumber: 0,
+                minutes: 0,
+            };
+        }
+
+        setExerciseData([...exericeData, new_exerciseData]);
     }
 
     return (
-        <div className='flex flex-col'>
+        <>
             <div className="flex flex-col pb-6">
                 <label className="mt-2 mb-2">Exercise</label>
 
                 <div className='flex flex-wrap'>
                     <input
+                        name='exerciseName'
                         className="w-5/12 px-3 py-2 leading-tight text-gray-700 rounded appearance-none md:w-auto drop-shadow-md focus:outline-none focus:shadow-outline"
                         placeholder='Bench Press'
+                        value={exercise.exerciseName}
                         type="text"
-                        onChange={(e) => (setExerciseName(e.target.value))}
+                        onChange={e => handleExercisesChange(idx, e)}
                     />
                     <div className='flex pl-4 justify-evenly'>
                         <div className='pt-2 text-sm md:pt-0'>
-                            <select className='px-3 py-2 font-light rounded drop-shadow-md focus:outline-none' onChange={(e) => (setExerciseType(e.target.value))}>
+                            <select className='px-3 py-2 font-light rounded drop-shadow-md focus:outline-none' name='type' onChange={e => handleExerciseType(idx, e)}>
                                 <option value={'Weighted'}>Weighted</option>
                                 <option value={'Time'}>Time</option>
                             </select>
                         </div>
                         <div className='pt-2 pl-3'>
-                            <button onClick={handleRemove}>
+                            <button onClick={deleteExerciseField}>
                                 <span>
                                     <IoRemoveCircleOutline color='red' size={23} />
                                 </span>
@@ -45,9 +69,19 @@ const ExerciseInput = ({ setExerciseName }) => {
                     </div>
                 </div>
             </div>
-
-            {numSets}
-
+            {
+                exericeData.map((setData, idx) => {
+                    return (
+                        <SetInput
+                            key={idx}
+                            idx={idx}
+                            setData={setData}
+                            handleExerciseDataChange={handleExerciseDataChange}
+                            exerciseType={exerciseType}
+                        />
+                    )
+                })
+            }
             <div className='pb-5'>
                 <button
                     id='addSetBtn'
@@ -57,7 +91,8 @@ const ExerciseInput = ({ setExerciseName }) => {
                     +Set
                 </button>
             </div>
-        </div>
+        </>
     )
 }
+
 export default ExerciseInput;

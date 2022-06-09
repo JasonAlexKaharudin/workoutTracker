@@ -1,26 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ExerciseInput from './ExerciseInput';
 
 const WorkoutForm = () => {
-    const [workoutName, setWorkoutName] = useState('');
-    const [exerciseName, setExerciseName] = useState('');    
     const [showCreateBtn, setCreateBtn] = useState(false);
-    const [exerciseList, setExerciseList] = useState([]);
+    const [workoutName, setWorkoutName] = useState('');
+    const [exerciseFields, setExerciseFields] = useState([]);
+
+    useEffect(() => {
+        if (exerciseFields.length > 0) {
+            setCreateBtn(true);
+        } else {
+            setCreateBtn(false);
+        }
+    }, [exerciseFields])
 
     const onAddExercise = (e) => {
         e.preventDefault();
 
-        if (showCreateBtn === false) {
-            setCreateBtn(true); // must check if array of exerclist is empty then set it to false, else true
-        }
+        let new_exercise = {
+            exerciseName: '',
+            type: 'Weighted'
+        };
 
-        setExerciseList(exerciseList.concat(<ExerciseInput key={exerciseList.length} exerciseName={exerciseName} setExerciseName={setExerciseName} />))
+        setExerciseFields([...exerciseFields, new_exercise]);
+    }
+
+    const deleteExerciseField = (idx) => {
+        let data = [...exerciseFields];
+        data.splice(idx, 1);
+        setExerciseFields(data);
+    }
+
+    const handleExercisesChange = (idx, e) => {
+        let data = [...exerciseFields];
+        data[idx][e.target.name] = e.target.value;
+
+        setExerciseFields(data);
     }
 
     const onCreate = (e) => {
         e.preventDefault();
         console.log("create button pressed");
-        console.log(`${exerciseName}`);
+        console.log(exerciseFields);
     }
 
     return (
@@ -31,13 +52,27 @@ const WorkoutForm = () => {
                     <input
                         className="w-full px-3 py-2 leading-tight text-gray-700 rounded appearance-none drop-shadow-md focus:outline-none focus:shadow-outline"
                         placeholder='Chest'
-                        type="text"
                         value={workoutName}
-                        onChange={(e) => setWorkoutName(e.target.value)}
+                        type="text"
+                        onChange={e => setWorkoutName(e.target.value)}
                     />
                 </div>
 
-                {exerciseList}
+                <div className='flex flex-col'>
+                    {
+                        exerciseFields.map((exercise, idx) => {
+                            return (
+                                <ExerciseInput 
+                                    exercise={exercise} 
+                                    idx={idx} 
+                                    handleExercisesChange={handleExercisesChange} 
+                                    deleteExerciseField={deleteExerciseField} 
+                                    key={idx} 
+                                />
+                            )
+                        })
+                    }
+                </div>
 
                 <div className='flex justify-between flex-reverse'>
                     <button
@@ -47,6 +82,7 @@ const WorkoutForm = () => {
                     >
                         Add Exercise
                     </button>
+
                     {showCreateBtn &&
                         <button
                             id='CreateBtn'
