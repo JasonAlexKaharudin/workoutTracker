@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExerciseInput from './ExerciseInput';
+import WorkoutNameInput from './WorkoutNameInput';
 import FormButton from './FormButton';
 
 const WorkoutForm = () => {
@@ -48,32 +49,23 @@ const WorkoutForm = () => {
     return (
         <section className='pb-28'>
             <form className="my-5 md:mr-44">
-                <div className="flex flex-col pb-7">
-                    <label className="mt-8 mb-2">Workout Name:</label>
-                    <input
-                        className="w-full px-3 py-2 leading-tight text-gray-700 rounded appearance-none drop-shadow-md focus:outline-none focus:shadow-outline"
-                        placeholder='Chest'
-                        value={workoutName}
-                        type="text"
-                        onChange={e => setWorkoutName(e.target.value)}
-                    />
-                </div>
+                <WorkoutNameInput workoutName={workoutName} setWorkoutName={setWorkoutName} />
 
-                <div className='flex flex-col'>
-                    {
-                        exerciseFields.map((exercise, idx) => {
-                            return (
+                {
+                    exerciseFields.map((exercise, idx) => {
+                        return (
+                            <div className='flex flex-col' key={idx}>
                                 <ExerciseInput
                                     exercise={exercise}
                                     idx={idx}
                                     handleExercisesChange={handleExercisesChange}
-                                    deleteExerciseField={deleteExerciseField}
-                                    key={idx}
+                                    deleteExerciseField={deleteExerciseField}                                    
                                 />
-                            )
-                        })
-                    }
-                </div>
+                            </div>
+                        )
+                    })
+                }
+
 
                 <div className='flex justify-between flex-reverse'>
                     <FormButton
@@ -81,7 +73,7 @@ const WorkoutForm = () => {
                         title={'Add Exercise'}
                         handleClick={onAddExercise}
                     />
-                    
+
                     {showCreateBtn &&
                         <FormButton
                             id={'CreateBtn'}
