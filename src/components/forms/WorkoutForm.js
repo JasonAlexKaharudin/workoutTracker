@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExerciseInput from './ExerciseInput';
+import FormButton from './FormButton';
 
 const WorkoutForm = () => {
     const [showCreateBtn, setCreateBtn] = useState(false);
@@ -62,12 +63,12 @@ const WorkoutForm = () => {
                     {
                         exerciseFields.map((exercise, idx) => {
                             return (
-                                <ExerciseInput 
-                                    exercise={exercise} 
-                                    idx={idx} 
-                                    handleExercisesChange={handleExercisesChange} 
-                                    deleteExerciseField={deleteExerciseField} 
-                                    key={idx} 
+                                <ExerciseInput
+                                    exercise={exercise}
+                                    idx={idx}
+                                    handleExercisesChange={handleExercisesChange}
+                                    deleteExerciseField={deleteExerciseField}
+                                    key={idx}
                                 />
                             )
                         })
@@ -75,22 +76,19 @@ const WorkoutForm = () => {
                 </div>
 
                 <div className='flex justify-between flex-reverse'>
-                    <button
-                        id='addExerciseBtn'
-                        className="px-4 py-2 rounded bg-sky-400 focus:outline-none focus:shadow-outline"
-                        onClick={onAddExercise}
-                    >
-                        Add Exercise
-                    </button>
-
+                    <FormButton
+                        id={'addExerciseBtn'}
+                        title={'Add Exercise'}
+                        handleClick={onAddExercise}
+                    />
+                    
                     {showCreateBtn &&
-                        <button
-                            id='CreateBtn'
-                            className="px-4 py-2 bg-green-400 rounded focus:outline-none focus:shadow-outline"
-                            onClick={onCreate}
-                        >
-                            Create
-                        </button>
+                        <FormButton
+                            id={'CreateBtn'}
+                            title={'Create'}
+                            handleClick={onCreate}
+                            createBtn={true}
+                        />
                     }
                 </div>
             </form>
